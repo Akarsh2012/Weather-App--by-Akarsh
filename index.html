@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>🌤️ Weather App-by Akarsh</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-lightning-rain-fill" viewBox="0 0 16 16">
+  <path d="M2.658 11.026a.5.5 0 0 1 .316.632l-.5 1.5a.5.5 0 1 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.316m9.5 0a.5.5 0 0 1 .316.632l-.5 1.5a.5.5 0 0 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.316m-7.5 1.5a.5.5 0 0 1 .316.632l-.5 1.5a.5.5 0 1 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.316m9.5 0a.5.5 0 0 1 .316.632l-.5 1.5a.5.5 0 0 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.316m-7.105-1.25A.5.5 0 0 1 7.5 11h1a.5.5 0 0 1 .474.658l-.28.842H9.5a.5.5 0 0 1 .39.812l-2 2.5a.5.5 0 0 1-.875-.433L7.36 14H6.5a.5.5 0 0 1-.447-.724zm6.352-7.249a5.001 5.001 0 0 0-9.499-1.004A3.5 3.5 0 1 0 3.5 10H13a3 3 0 0 0 .405-5.973"/>
+</svg>  Weather App</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html" target="_blank">About This App</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link " href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input id="city" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit" id="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="display-6 text-center mb-4  " style="margin-top: 20px; font-weight: 400;" ><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-cloud-lightning-rain" viewBox="0 0 16 16">
+  <path d="M2.658 11.026a.5.5 0 0 1 .316.632l-.5 1.5a.5.5 0 1 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.316m9.5 0a.5.5 0 0 1 .316.632l-.5 1.5a.5.5 0 1 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.316m-7.5 1.5a.5.5 0 0 1 .316.632l-.5 1.5a.5.5 0 1 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.316m9.5 0a.5.5 0 0 1 .316.632l-.5 1.5a.5.5 0 1 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.316m-.753-8.499a5.001 5.001 0 0 0-9.499-1.004A3.5 3.5 0 1 0 3.5 10H13a3 3 0 0 0 .405-5.973M8.5 1a4 4 0 0 1 3.976 3.555.5.5 0 0 0 .5.445H13a2 2 0 0 1 0 4H3.5a2.5 2.5 0 1 1 .605-4.926.5.5 0 0 0 .596-.329A4 4 0 0 1 8.5 1M7.053 11.276A.5.5 0 0 1 7.5 11h1a.5.5 0 0 1 .474.658l-.28.842H9.5a.5.5 0 0 1 .39.812l-2 2.5a.5.5 0 0 1-.875-.433L7.36 14H6.5a.5.5 0 0 1-.447-.724z"/>
+</svg> Weather Of <span
+                id="cityname"></span></h1>
+        <main>
+            <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+                <div class="col">
+                    <div class="card h-75 shadow p-2 mb-5 bg-body rounded">
+                        <div class="card-header py-3 text-bg-dark  border-dark">
+                            <h4 class="my-0 fw-normal">Temperature Info</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title"><span id="temp"></span><span>&#8451 </span><span
+                                    id="desc"></span>
+                            </h1>
+                            <ul class="list-unstyled mt-3 mb-4">
+
+                                <li>Maximum Temperature is <span id="max_temp"></span><span>&#8451</span></li>
+                                <li>Minimum Temperature is <span id="min_temp"></span><span>&#8451</span></li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-75 shadow p-2 mb-5 bg-body rounded ">
+                        <div class="card-header py-3 text-bg-dark border-dark">
+                            <h4 class="my-0 fw-normal">Humidity Info</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title"><span id="humidity2"></span><span>%</span>
+                            </h1>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li>Humidity is <span id="humidity"></span>
+                                </li>
+                                <li>Feels Like <span id="feel_like"></span><span>&#8451</span></li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-75 shadow p-2 mb-5 bg-body rounded ">
+                        <div class="card-header py-3 text-bg-dark border-dark">
+                            <h4 class="my-0 fw-normal">Wind Info</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title"><span id="wind_speed"></span><small>kmph</small>
+                            </h1>
+                            <ul class="list-unstyled mt-3 mb-4">
+
+                                <li>Wind Degrees: <span id="wind_degrees"></span></li>
+                                <li>Sunrise Time is <span id="sunrise"></span></li>
+                                <li>Sunset Time is <span id="sunset"></span></li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow p-2 mb-5 bg-body rounded ">
+                <h2 class="display-6 text-center mb-4">Weather Of Some Common Places</h2>
+
+                <div class="table-responsive">
+                    <table class="table text-center">
+                        <thead>
+                            <tr>
+                                <th style="width: 34%;"></th>
+                                <th style="width: 22%;">Cloud_pct</th>
+                                <th style="width: 22%;">Feels_like(<span>&#8451</span>)
+                                </th>
+                                <th style="width: 22%;">Humidity(%)</th>
+                                <th style="width: 22%;">Max_Temp(<span>&#8451</span>)</th>
+                                <th style="width: 22%;">Min_Temp(<span>&#8451</span>)</th>
+                                <th style="width: 22%;">Sunrise</th>
+                                <th style="width: 22%;">Sunset</th>
+                                <th style="width: 22%;">Temp(<span>&#8451</span>)</th>
+                                <th style="width: 22%;">Wind_degrees</th>
+                                <th style="width: 22%;">Wind_speed(kmph)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row" class="text-start">Australia</th>
+                                <td class="Australia"></td>
+                                <td class="Australia"></td>
+                                <td class="Australia"></td>
+                                <td class="Australia"></td>
+                                <td class="Australia"></td>
+                                <td class="Australia"></td>
+                                <td class="Australia"></td>
+                                <td class="Australia"></td>
+                                <td class="Australia"></td>
+                                <td class="Australia"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-start">London</th>
+                                <td class="London"></td>
+                                <td class="London"></td>
+                                <td class="London"></td>
+                                <td class="London"></td>
+                                <td class="London"></td>
+                                <td class="London"></td>
+                                <td class="London"></td>
+                                <td class="London"></td>
+                                <td class="London"></td>
+                                <td class="London"></td>
+                            </tr>
+                        </tbody>
+
+                        <tbody>
+                            <tr>
+                                <th scope="row" class="text-start">Switzerland</th>
+                                <td class="Switzerland"></td>
+                                <td class="Switzerland"></td>
+                                <td class="Switzerland"></td>
+                                <td class="Switzerland"></td>
+                                <td class="Switzerland"></td>
+                                <td class="Switzerland"></td>
+                                <td class="Switzerland"></td>
+                                <td class="Switzerland"></td>
+                                <td class="Switzerland"></td>
+                                <td class="Switzerland"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-start">Nepal</th>
+                                <td class="Nepal"></td>
+                                <td class="Nepal"></td>
+                                <td class="Nepal"></td>
+                                <td class="Nepal"></td>
+                                <td class="Nepal"></td>
+                                <td class="Nepal"></td>
+                                <td class="Nepal"></td>
+                                <td class="Nepal"></td>
+                                <td class="Nepal"></td>
+                                <td class="Nepal"></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
